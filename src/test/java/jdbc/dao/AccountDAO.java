@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.print.MultiDocPrintService;
-
 import jdbc.vo.AccountVO;
 
 public class AccountDAO {
