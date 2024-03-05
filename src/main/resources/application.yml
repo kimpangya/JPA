@@ -1,10 +1,9 @@
 spring:
-  datasource:
+  datasource: # 여기에 정보만 입력하면 HibernateJpaAutoConfiguration 가 연결 설정해줌
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/messenger
     username: pangya
     password: pass
-
   jpa:
     hibernate:
       ddl-auto: create
