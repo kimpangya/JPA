@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
 
-@SpringBootTest(classes = ChannelRepository.class)
+@SpringBootTest
 @Rollback(value = false)
 @Transactional
 class ChannelRepositoryTest {
