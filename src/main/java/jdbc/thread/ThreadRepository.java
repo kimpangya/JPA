@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class ThreadRepository {
 
@@ -11,12 +12,12 @@ public class ThreadRepository {
 	EntityManager entityManager;
 
 
-	public Thread insertChannel(Thread thread) {
+	public Thread insertThread(Thread thread) {
 		entityManager.persist(thread);
 		return thread;
 	}
 
-	public Thread selectChannel(Long id) {
+	public Thread selectThread(Long id) {
 		return entityManager.find(Thread.class, id);
 	}
 }

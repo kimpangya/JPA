@@ -17,6 +17,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jdbc.thread.Thread;
 import jdbc.user.Address;
+import jdbc.user.User;
+import jdbc.userChannel.UserChannel;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -76,10 +78,22 @@ public class Channel {
 	@OneToMany(mappedBy = "channel")
 	private Set<Thread> threads = new LinkedHashSet<>();
 
+	@OneToMany(mappedBy = "channel")
+	private Set<UserChannel> userChannels= new LinkedHashSet<>();
+
 	/**
 	 * 연관관계 편의 메소드 - 반대쪽에는 연관관계 편의 메소드가 없도록 주의합니다.
 	 */
+	public void addThread(Thread thread){
+		this.threads.add(thread);
+	}
 
+	public UserChannel joinUser(User user){
+		var userChannel=UserChannel.builder().user(user).channel(this).build();
+		this.userChannels.add(userChannel);
+		user.getUserChannels().add(userChannel);
+		return userChannel;
+	}
 
 	/**
 	 * 서비스 메소드 - 외부에서 엔티티를 수정할 메소드를 정의합니다. (단일 책임을 가지도록 주의합니다.)
